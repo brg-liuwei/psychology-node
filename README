@@ -1,0 +1,5 @@
+#install dep:
+    npm install
+
+#start:
+    npm start
