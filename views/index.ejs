@@ -1,7 +1,29 @@
 <% include header.ejs %>
 
+<script>
+$('document').ready(function() {
+    $('#mytitle').mousemove(function(e) {
+        var c = $(this).css('color');
+        if (c == 'rgb(255, 0, 0)') {
+            c = 'rgb(255, 255, 0)';
+        } else if (c == 'rgb(255, 255, 0)') {
+            c = 'rgb(0, 0, 255)';
+        } else if (c == 'rgb(0, 0, 255)') {
+            c = 'rgb(0, 255, 0)';
+        } else if (c == 'rgb(0, 255, 0)') {
+            c = 'rgb(0, 255, 255)';
+        } else if (c == 'rgb(0, 255, 255)') {
+            c = 'rgb(255, 0, 255)';
+        } else {
+            c = 'rgb(255, 0, 0)';
+        }
+        $(this).css('color', c);
+    });
+});
+</script>
+
 <div>
-    <h1><%= title %></h1>
+    <h3 id="mytitle" style="color:#888;font-size:20px;"><%= title %></h3>
     <p><%= content %></p>
 </div>
 
@@ -16,7 +38,7 @@
 </div>
 
 <table id="eg-table" class="table table-hover">
-<caption><p color="red">量化表格</p></caption> <!-- why -->
+<caption><p style="color:red">量化表格</p></caption>
 <thead>
 <tr>
     <th>#</th>

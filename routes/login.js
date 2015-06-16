@@ -3,7 +3,9 @@ var login = express.Router();
 
 /* GET home page. */
 login.get('/', function(req, res, next) {
-  res.send('login');
+  res.render('login', {
+      currentPage: 'login'
+  });
 });
 
 module.exports = login;

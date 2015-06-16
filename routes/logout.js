@@ -3,7 +3,9 @@ var logout = express.Router();
 
 /* GET home page. */
 logout.get('/', function(req, res, next) {
-    res.send('logout');
+    res.render('logout', {
+        currentPage: 'logout'
+    });
 });
 
 module.exports = logout;

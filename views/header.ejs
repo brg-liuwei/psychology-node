@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
+        
         <script type="text/javascript" src="/javascripts/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+
         <script>
-            $('document').ready(function() {
-                // alert('document load ok');
-                // jquery
-            });
+            $(document).ready(function() {
+                $('#<%= currentPage %>').addClass('active');
+            })
         </script>
+        
         
         <title> MyWeb </title>
 
@@ -45,19 +47,19 @@
               <div class="nav-collapse collapse">
                   
                 <ul class="nav nav-pills pull-left">
-                    <li class="active">
+                    <li id="index">
                         <a href="/"><i class="icon-home icon-heart"></i>首页</a>
                     </li>
-                    <li>
+                    <li id="help">
                         <a href="/help"><i class="icon-heart"></i>帮助</a>
                     </li>
-                    <li>
+                    <li id="reg">
                         <a href="/reg"><i class="icon-fire"></i>注册</a>
                     </li>
-                    <li>
-                        <a href="/login"><i class="icon-user"></i>登录</a>
+                    <li id="login">
+                        <a href="/login"><i class="icon-plane"></i>登录</a>
                     </li>
-                    <li>
+                    <li id="logout">
                         <a href="/logout"><i class="icon-off"></i>登出</a>
                     </li>
                 </ul>
