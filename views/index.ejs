@@ -1,25 +1,112 @@
 <% include header.ejs %>
 
 <script>
-$('document').ready(function() {
-    $('#mytitle').mousemove(function(e) {
-        var c = $(this).css('color');
-        if (c == 'rgb(255, 0, 0)') {
-            c = 'rgb(255, 255, 0)';
-        } else if (c == 'rgb(255, 255, 0)') {
-            c = 'rgb(0, 0, 255)';
-        } else if (c == 'rgb(0, 0, 255)') {
-            c = 'rgb(0, 255, 0)';
-        } else if (c == 'rgb(0, 255, 0)') {
-            c = 'rgb(0, 255, 255)';
-        } else if (c == 'rgb(0, 255, 255)') {
-            c = 'rgb(255, 0, 255)';
-        } else {
-            c = 'rgb(255, 0, 0)';
-        }
-        $(this).css('color', c);
+    $('document').ready(function() {
+        $('#mytitle').mousemove(function(e) {
+            var c = $(this).css('color');
+            if (c == 'rgb(255, 0, 0)') {
+                c = 'rgb(255, 255, 0)';
+                } else if (c == 'rgb(255, 255, 0)') {
+                c = 'rgb(0, 0, 255)';
+                } else if (c == 'rgb(0, 0, 255)') {
+                c = 'rgb(0, 255, 0)';
+                } else if (c == 'rgb(0, 255, 0)') {
+                c = 'rgb(0, 255, 255)';
+                } else if (c == 'rgb(0, 255, 255)') {
+                c = 'rgb(255, 0, 255)';
+                } else {
+                c = 'rgb(255, 0, 0)';
+            }
+            $(this).css('color', c);
+        });
+
+        var lctx = $("#line").get(0).getContext("2d");
+
+        var data = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };
+        var line = new Chart(lctx).Line(data, {
+            scaleShowGridLines : true,
+            bezierCurve: true
+        });
+
+        var pctx = $("#polarArea").get(0).getContext("2d");
+        var polarArea = new Chart(pctx).PolarArea([
+            {
+                value: 124,
+                color: "#888888"
+            },
+            {
+                value: 99,
+                color: "#234567"
+            },
+            {
+                value: 255,
+                color: "#ABCDEF"
+            }
+            ], 
+            {});
+
+        var bctx = $("#bar").get(0).getContext("2d");
+        var bardata = {
+            labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.5)",
+                    strokeColor: "rgba(151,187,205,0.8)",
+                    highlightFill: "rgba(151,187,205,0.75)",
+                    highlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                },
+                {
+                    label: "My Third dataset",
+                    fillColor: "rgba(255,255,205,0.5)",
+                    strokeColor: "rgba(151,187,205,0.8)",
+                    highlightFill: "rgba(151,187,205,0.75)",
+                    highlightStroke: "rgba(151,187,205,1)",
+                    data: [99, 10, 4, 88, 26, 97, 10]
+                }
+            ]
+        };
+        var bar = new Chart(bctx).Bar(bardata, {
+            scaleGridLineWidth: 1,
+            barStrokeWidth: 1,
+            barValueSpacing: 15,
+            barDatasetSpacing: 0
+        });
     });
-});
+
 </script>
 
 <div>
@@ -28,50 +115,53 @@ $('document').ready(function() {
 </div>
 
 <div>
-<dl class="dl-horizontal">
-    <dt>H1</dt>
-    <dd>c1</dd>
+    <dl class="dl-horizontal">
+        <dt>H1</dt>
+        <dd>c1</dd>
 
-    <dt>H2</dt>
-    <dd>c2</dd>
-</dl>
+        <dt>H2</dt>
+        <dd>c2</dd>
+    </dl>
 </div>
 
 <table id="eg-table" class="table table-hover">
-<caption><p style="color:red">量化表格</p></caption>
-<thead>
-<tr>
-    <th>#</th>
-    <th>第一列</th>
-    <th>第二列</th>
-    <th>第三列</th>
-</tr>
-<tbody>
-    <tr class="warning">
-        <td>1</td>
-        <td>SA</td>
-        <td>HA</td>
-        <td>DA</td>
-    </tr>
-    <tr class="info">
-        <td>2</td>
-        <td>XIMP</td>
-        <td>MP</td>
-        <td>SCORE</td>
-    </tr>
-</tbody>
-</thead>
+    <caption><p style="color:red">量化表格</p></caption>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>第一列</th>
+            <th>第二列</th>
+            <th>第三列</th>
+        </tr>
+        <tbody>
+            <tr class="warning">
+                <td>1</td>
+                <td>SA</td>
+                <td>HA</td>
+                <td>DA</td>
+            </tr>
+            <tr class="info">
+                <td>2</td>
+                <td>XIMP</td>
+                <td>MP</td>
+                <td>SCORE</td>
+            </tr>
+        </tbody>
+    </thead>
 </table>
 
+<canvas id="line" width="950" height="400"></canvas>
+<canvas id="polarArea" width="400" height="400"></canvas>
+<canvas id="bar" width="950" height="400"></canvas>
+
 <div>
-<p color="blue">this is icon-search begin</p>
-<i class="icon-search"></i>
-<p>this is icon-search end</p>
+    <p color="blue">this is icon-search begin</p>
+    <i class="icon-search"></i>
+    <p>this is icon-search end</p>
 </div>
 
 <div>
-<p>hello world</p>
+    <p>hello world</p>
 </div>
-
 
 <% include footer.ejs %>
